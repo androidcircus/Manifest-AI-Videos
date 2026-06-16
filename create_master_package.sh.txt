@@ -1,0 +1,14 @@
+
+---
+
+## 🚀 TO USE THIS SCRIPT
+
+```bash
+# 1. Save the script above as create_master_package.sh
+nano create_master_package.sh
+
+# 2. Make it executable
+chmod +x create_master_package.sh
+
+# 3. Run it
+./create_master_package.sh

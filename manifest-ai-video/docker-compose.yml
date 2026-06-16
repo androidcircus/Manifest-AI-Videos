@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    volumes: [redis_data:/data]
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: manifest_ai
+      POSTGRES_USER: manifest
+      POSTGRES_PASSWORD: manifest123
+    ports: ["5432:5432"]
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    ports: ["8000:8000"]
+    depends_on: [redis, postgres]
+    volumes: [video_outputs:/app/outputs]
+    restart: unless-stopped
+
+  celery_worker:
+    build: ./backend
+    command: celery -A tasks worker --loglevel=info
+    depends_on: [redis, postgres]
+    volumes: [video_outputs:/app/outputs]
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports: ["3000:3000"]
+    depends_on: [backend]
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+  postgres_data:
+  video_outputs:

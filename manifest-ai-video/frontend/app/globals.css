@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { background: #0a0a0f; color: white; }
+.glass-card { background: rgba(17,17,24,0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; }
+.manifest-gradient { background: linear-gradient(135deg, #00f3ff 0%, #7000ff 100%); }
+.manifest-button { background: linear-gradient(135deg, #00f3ff 0%, #7000ff 100%); padding: 12px 24px; border-radius: 12px; font-weight: 600; transition: all 0.3s; }
+.manifest-button:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(0,243,255,0.3); }
