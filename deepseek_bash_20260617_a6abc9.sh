@@ -1,0 +1,1 @@
+curl -sL https://gist.githubusercontent.com/.../raw/... -o build.sh && bash build.sh
